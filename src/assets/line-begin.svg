@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="11px" viewBox="0 0 11 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>线路图-未开始</title>
+    <defs>
+        <circle id="path-1" cx="227.5" cy="40.5" r="5.5"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="11" height="11" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="0630" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-dasharray="2,1">
+        <g id="PC-切图" transform="translate(-222.000000, -35.000000)" fill="#FFFFFF" stroke="#00117A" stroke-width="2">
+            <use id="椭圆形备份-10" mask="url(#mask-2)" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
