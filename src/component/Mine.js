@@ -255,7 +255,10 @@ function ActiveMineItem(props) {
     }
   }, [depositToken, tokenGraph])
 
-  const re = /([0-9]+\.[0-9]{2})[0-9]*/;
+  const re = /([0-9]+\.[0-9]{6})[0-9]*/;
+
+  const [progress, setProgress] = useState()
+    
   return (
     <>
       <Mui.DialogTitle disableTypography sx={{ position: 'relative' }}>
@@ -289,7 +292,7 @@ function ActiveMineItem(props) {
          <InfoLine/>
           <InfoLine2
           name={intl.formatMessage({ defaultMessage: 'My Staking' })}
-          value={depositedAmount ? depositedAmount.toFixed() : '–'}
+          value={depositedAmount ? depositedAmount.toFixed().replace(re,"$1") : '–'}
         />
         <Mui.TextField
           label={intl.formatMessage({ defaultMessage: 'Amount' })}
@@ -339,7 +342,7 @@ function ActiveMineItem(props) {
         <InfoLine/>
         <InfoLine2
           name={intl.formatMessage({ defaultMessage: 'Deposit' })}
-          value={depositBalance ? depositBalance.toFixed()  : '–'}
+          value={depositBalance ? depositBalance.toFixed().replace(re,"$1")  : '–'}
           
         />
         <Mui.TextField
@@ -376,6 +379,13 @@ function ActiveMineItem(props) {
          
       
       </Mui.DialogContent>
+
+      <Mui.Dialog
+        open={!!progress}
+        onClose={() => setProgress()}
+        fullWidth
+      >
+      </Mui.Dialog>
     </>
   )
 }
@@ -501,6 +511,8 @@ export default function Mine() {
 
   const pools = useMinePools()
   const [activeMineItem, setActiveMineItem] = useState()
+
+
   const elementRef = useRef()
   return (
     <>
