@@ -46,7 +46,7 @@ export default function TokenInput(props) {
   const tokenSelectionDispatch = useTokenSelectionDispatch()
   const intl = useIntl()
   const classes = useStyles();
-  const imgs = [HT, VIT, USDT];   
+  const re = /([0-9]+\.[0-9]{6})[0-9]*/;
   return (
     <>
       <Mui.TextField
@@ -60,7 +60,7 @@ export default function TokenInput(props) {
           value: /^\d*\.?\d*$/.test(e.target.value) ? e.target.value : amount,
           address
         })}
-        helperText={balance && intl.formatMessage({ defaultMessage: 'Balance: {balance}' }, { balance: balance.toFixed() })}
+        helperText={balance && intl.formatMessage({ defaultMessage: 'Balance: {balance}' }, { balance: balance.toFixed().replace(re,"$1") })}
         fullWidth
         disabled={disabled}
         sx={{ mt: 1 }}
@@ -72,7 +72,7 @@ export default function TokenInput(props) {
             </Mui.Button>
           </Mui.InputAdornment>,
           endAdornment: balance && !hideMax && <Mui.InputAdornment position="end">
-            <Mui.Button style={{textTransform: 'none'}}  sx={{ mr: '-12px' }} size="small" onClick={() => dispatch({ type: 'amount_changed', value: balance.toFixed(), address })} >
+            <Mui.Button style={{textTransform: 'none'}}  sx={{ mr: '-12px' }} size="small" onClick={() => dispatch({ type: 'amount_changed', value: balance.toFixed().replace(re,"$1"), address })} >
               {intl.formatMessage({ defaultMessage: 'Max' })}
             </Mui.Button>
           </Mui.InputAdornment>
