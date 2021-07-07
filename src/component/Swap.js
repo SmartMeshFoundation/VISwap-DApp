@@ -350,7 +350,7 @@ function Swap() {
       buttonVariant: "contained",
       buttonDisabled: true
     }
-  } else if (!trade.amount0 || !trade.amount1 || !trade.price) {
+  } else if (!parseFloat(trade.amount0) || !parseFloat(trade.amount1) || !parseFloat(trade.price)) {
     display = {
       buttonText: intl.formatMessage({ defaultMessage: 'Pleace Enter Amount' }),
       buttonVariant: "contained",
@@ -409,6 +409,7 @@ function Swap() {
     }
   }, [trade.bestRoute, tokenGraph, token0.displayName, token1.displayName])
 
+  const re = /([0-9]+\.[0-9]{6})[0-9]*/;
   return (
     <>
    
@@ -496,7 +497,7 @@ function Swap() {
             {display.buttonText}
           </Mui.Button>
 
-          <Mui.Collapse in={type === 'swap' && !isDeposit && !isWithdraw && trade.amount1}>
+          <Mui.Collapse in={type === 'swap' && !isDeposit && !isWithdraw && parseFloat(trade.amount1)}>
             <InfoLine/>
             <InfoLine/>
             <InfoLine
