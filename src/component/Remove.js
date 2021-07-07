@@ -165,7 +165,7 @@ export default function Remove({ address }) {
       buttonOnClick: () => removeLiquidity(trade, true)
     }
   }
-
+  const re = /([0-9]+\.[0-9]{6})[0-9]*/;
   return (
     <>
       <Mui.DialogTitle disableTypography sx={{ position: 'relative' }}>
@@ -235,11 +235,11 @@ export default function Remove({ address }) {
           </Mui.Typography>
           <InfoLine
             name={pair.token0.displayName}
-            value={trade.amount0.toFixed()}
+            value={trade.amount0.toFixed().replace(re,"$1")}
           />
           <InfoLine
             name={pair.token1.displayName}
-            value={trade.amount1.toFixed()}
+            value={trade.amount1.toFixed().replace(re,"$1")}
           />
         </Mui.Collapse>
         <Mui.Button fullWidth style={{textTransform: 'none'}} variant={display.buttonVariant} onClick={display.buttonOnClick} disabled={display.buttonDisabled}>
