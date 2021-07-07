@@ -50,7 +50,10 @@
     background-color: white !important;
     border: 1px solid #ED1F7A !important
 }
-
+.cn-custom-max {
+    color: #ED1F7A !important;
+    background-color: white !important;
+}
 /* hexiangshuai */
 body,
 html {
