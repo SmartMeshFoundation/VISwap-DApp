@@ -440,12 +440,17 @@ function MineItem(props) {
   return (
     <Mui.Grid item width="100%" md={6} lg={4} sx={{ marginTop: {xs: "10px"},overflow: "hidden" ,boxShadow: "none" }}>
       <Mui.Card sx={{ maxWidth: 350, mx: 'auto' }} >
-        <Mui.Grid m={1} container direction="row" justifyContent="center" alignItems="center" spacing={-2}>
-        <Mui.Avatar  src={getImg(depositToken,tokenGraph,displayName,true)} sx={{ marginTop: {xs: "25px"}}}  />
+
+        <Mui.Grid item container width="auto" maxWidth="calc(100% + 8px)" justifyContent="center" alignItems="center" wrap="nowrap" spacing={-2}>
+        <Mui.Grid item zeroMinWidth mr={-1}>
+        <Mui.Avatar  src={getImg(depositToken,tokenGraph,displayName,true)} sx={{ marginTop: {xs: "25px"}}} mr={0.3} />
+        </Mui.Grid>
+         <Mui.Grid item flexShrink={0} mr={1}>
          {
           getImg(depositToken,tokenGraph,displayName,false)&&<Mui.Avatar  visable="false" sx={{ marginTop: {xs: "25px"}}} src={getImg(depositToken,tokenGraph,displayName,false)} />
         }
         </Mui.Grid>
+       </Mui.Grid>
         <Mui.Typography   textAlign="center" fontWeight = "fontWeightMedium" style={{ fontSize: '20px' }}>
           {displayName}
          </Mui.Typography>
@@ -471,8 +476,8 @@ function MineItem(props) {
            <InfoLine />
            <InfoLine 
             name={intl.formatMessage({ defaultMessage: 'TVL' })}
-            unit={ '$'}
-            value={isLoading?"~":poolList[index].tvl}
+            unit={isLoading?"~":poolList[index].tvl}
+            value={'$'}
           />
           
           <InfoLine 
