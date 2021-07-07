@@ -19,7 +19,7 @@ export default function InfoLine(props) {
         </Mui.Typography>
       </Mui.Grid>
       <Mui.Grid item container width="auto" maxWidth="calc(100% + 8px)" alignItems="center" wrap="nowrap">
-        <Mui.Grid item zeroMinWidth mr={1}>
+        <Mui.Grid item zeroMinWidth mr={0.3}>
           <Mui.Typography noWrap variant="body2" component="div">
             {props.value}
           </Mui.Typography>
