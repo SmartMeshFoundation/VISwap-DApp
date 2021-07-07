@@ -302,7 +302,7 @@ function ActiveMineItem(props) {
           sx={{ mt: 1 }}
           InputProps={{
             endAdornment: <Mui.InputAdornment position="end">
-              <Mui.Button color="secondary"  sx={{ mr: '-12px' }} size="small" onClick={() => setWithdrawAmount(depositedAmount.toFixed())} >
+              <Mui.Button className = "cn-custom-max"  sx={{ mr: '-12px' }} size="small" onClick={() => setWithdrawAmount(depositedAmount.toFixed())} >
                 {intl.formatMessage({ defaultMessage: 'Max' })}
               </Mui.Button>
             </Mui.InputAdornment>
@@ -329,7 +329,7 @@ function ActiveMineItem(props) {
         }
    
         {depositToken.address in tokenGraph.pairs &&
-         <Mui.Typography  variant="h20" color= "secondary"  textAlign="center">
+         <Mui.Typography  style={{ fontSize: '14px'}} sx={{ padding: 1}} color= "#ED1F7A"  textAlign="center">
               Add Liquidity
          </Mui.Typography>
         }
@@ -353,7 +353,7 @@ function ActiveMineItem(props) {
           sx={{ mt: 1 }}
           InputProps={{
             endAdornment: <Mui.InputAdornment position="end">
-              <Mui.Button color="secondary" sx={{ mr: '-12px' }} size="small" onClick={() => setDepositAmount(depositBalance.toFixed())} >
+              <Mui.Button className = "cn-custom-max" sx={{ mr: '-12px' }} size="small" onClick={() => setDepositAmount(depositBalance.toFixed())} >
                 {intl.formatMessage({ defaultMessage: 'Max' })}
               </Mui.Button>
             </Mui.InputAdornment>
