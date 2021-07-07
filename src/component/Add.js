@@ -280,6 +280,7 @@ export default function Add() {
     }
   }
 
+  const re = /([0-9]+\.[0-9]{6})[0-9]*/;
   return (
     <>
       <Mui.DialogTitle disableTypography sx={{ position: 'relative' }}>
@@ -358,7 +359,7 @@ export default function Add() {
           <InfoLine
             name={intl.formatMessage({ defaultMessage: 'Reward (estimated)' })}
             tooltip={intl.formatMessage({ defaultMessage: 'The pool tokens you can receive.' })}
-            value={lpToken.toFixed()}
+            value={lpToken.toFixed().replace(re,"$1")}
             unit="LP Token"
           />
           <InfoLine
