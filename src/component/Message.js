@@ -14,7 +14,7 @@ function MessageInnerProvider(props) {
   const wrapWeb3Request = useCallback((request) => {
     let key;
     const getAction = (hash) => (key) => <>
-      {hash && <Mui.Button sx={{ fontWeight: 600 }} color="secondary" size="small" target="_blank" rel="noopener noreferrer" href={`https://rinkeby.etherscan.io/tx/${hash}`}>
+      {hash && <Mui.Button sx={{ fontWeight: 600 }} color="secondary" size="small" target="_blank" rel="noopener noreferrer" href={`https://hecoinfo.com/tx/${hash}`}>
         {intl.formatMessage({ defaultMessage: 'View' })}
       </Mui.Button>}
       <Mui.IconButton
