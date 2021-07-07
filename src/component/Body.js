@@ -112,6 +112,7 @@ export default function Body() {
           <Mui.ListItemText className="menu-text" primary={intl.formatMessage({ defaultMessage: 'Farm' })} />
         </Mui.ListItem>
 
+        <Mui.Tooltip placement="right" title={intl.formatMessage({ defaultMessage: 'coming soon...' })}>
         <Mui.ListItem
           button
           onClick={() => setMobileOpen(false)}>
@@ -120,9 +121,10 @@ export default function Body() {
             <img className="menu-selected-icon" src={bridgeSelected}></img>
           </Mui.ListItemIcon>
           <Mui.ListItemText className="menu-text" primary={intl.formatMessage({ defaultMessage: 'Bridge' })} />
-       
          </Mui.ListItem>
+         </Mui.Tooltip>
 
+          <Mui.Tooltip placement="right" title={intl.formatMessage({ defaultMessage: 'coming soon...' })}>
           <Mui.ListItem 
             button
           onClick={() => setMobileOpen(false)}>
@@ -132,8 +134,10 @@ export default function Body() {
           </Mui.ListItemIcon>
           <Mui.ListItemText className="menu-text" primary={intl.formatMessage({ defaultMessage: 'Governance' })} />
         </Mui.ListItem>
+        </Mui.Tooltip>
 
-          <Mui.ListItem
+        <Mui.Tooltip placement="right" title={intl.formatMessage({ defaultMessage: 'coming soon...' })}>
+        <Mui.ListItem
             button
           onClick={() => setMobileOpen(false)}>
           <Mui.ListItemIcon>
@@ -142,10 +146,11 @@ export default function Body() {
           </Mui.ListItemIcon>
           <Mui.ListItemText className="menu-text" primary={intl.formatMessage({ defaultMessage: 'Explorer' })} />
         </Mui.ListItem>
+        </Mui.Tooltip>
 
           <Mui.ListItem 
            button
-          onClick={() => setMobileOpen(false)}
+          onClick={() => {window.open("https://viswap.io/faq.html"); setMobileOpen(false)}}
      
           >
           <Mui.ListItemIcon>
@@ -155,6 +160,7 @@ export default function Body() {
           <Mui.ListItemText className="menu-text" primary={intl.formatMessage({ defaultMessage: 'Doc' })} />
         </Mui.ListItem>
         
+         <Mui.Tooltip placement="right" title={intl.formatMessage({ defaultMessage: 'coming soon...' })}>
          <Mui.ListItem
            button
           onClick={() => setMobileOpen(false)}>
@@ -164,6 +170,7 @@ export default function Body() {
           </Mui.ListItemIcon>
           <Mui.ListItemText className="menu-text" primary={intl.formatMessage({ defaultMessage: 'Listing' })} />
         </Mui.ListItem>
+        </Mui.Tooltip>
       </Mui.List>
 
       <div className="SmartMesh">
