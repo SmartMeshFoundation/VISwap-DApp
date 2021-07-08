@@ -508,10 +508,8 @@ export default function Mine() {
  const pooInfo = {
     isLoading :true,
     poolList :[]
-    
-}
-  const name = "jack";
-  const postion = 0;
+   
+  }
   useEffect(() => {
     fetch('https://testnet.viswap.io/data/info.json')
       .then((response) => response.json())
