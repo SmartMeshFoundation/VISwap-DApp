@@ -64,8 +64,8 @@ export default function Home() {
   const re = /([0-9]+\.[0-9]{2})[0-9]*/;
 
   const [isLoading, setLoading] = useState(true);
-  const [totalLocked, setTotalLocked] = useState([]);
-  const [price, setPrice] = useState([]);
+  const [totalLocked, setTotalLocked] = useState([0]);
+  const [price, setPrice] = useState([0]);
 
   useEffect(() => {
     fetch('https://testnet.viswap.io/data/info.json')
