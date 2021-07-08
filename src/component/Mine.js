@@ -473,7 +473,7 @@ function MineItem(props) {
           
           <InfoLine 
             name={intl.formatMessage({ defaultMessage: 'Weekly rewards' })}
-            value={outputPerBlock ? outputPerBlock.toFixed()*20*60*7 : '–'}
+            value={outputPerBlock ? outputPerBlock.toFixed()*20*60*24*7 : '–'}
             unit={intl.formatMessage({ defaultMessage: '{token}' }, {
               token: daoToken.displayName
             })}
