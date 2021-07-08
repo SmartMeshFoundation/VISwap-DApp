@@ -391,8 +391,12 @@ function ActiveMineItem(props) {
 }
 
 function MineItem(props) {
-  
-  const {isLoading,poolList,depositToken, index, handleDepositClick} = props
+  var {isLoading} = props
+  const {poolList, depositToken, index, handleDepositClick} = props
+  if(!isLoading && index >= poolList.length)
+  {
+    isLoading =true;
+  }
   const intl = useIntl()
   const chain = useChain()
   const tokenGraph = useTokenGraph()
