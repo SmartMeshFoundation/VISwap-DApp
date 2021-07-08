@@ -392,7 +392,7 @@ function ActiveMineItem(props) {
 
 function MineItem(props) {
   
-  const { depositToken, index, handleDepositClick} = props
+  const {isLoading,poolList,depositToken, index, handleDepositClick} = props
   const intl = useIntl()
   const chain = useChain()
   const tokenGraph = useTokenGraph()
@@ -427,16 +427,7 @@ function MineItem(props) {
     }
   }, [depositToken, tokenGraph])
 
-  const [isLoading, setLoading] = useState(true);
-  const [poolList, setPoolList] = useState([]);
-
-  useEffect(() => {
-    fetch('https://testnet.viswap.io/data/info.json')
-      .then((response) => response.json())
-      .then((json) => setPoolList(json.poolList))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
+  
   return (
     <Mui.Grid item width="100%" md={6} lg={4} sx={{ marginTop: {xs: "10px"},overflow: "hidden" ,boxShadow: "none" }}>
       <Mui.Card sx={{ maxWidth: 350, mx: 'auto' }} >
@@ -504,26 +495,32 @@ function MineItem(props) {
 }
 
 export default function Mine() {
-  const [isLoading, setLoading] = useState(true);
-  const [poolList1, setPoolList1] = useState([]);
+  const pools = useMinePools()
+  const [activeMineItem, setActiveMineItem] = useState()
+  const elementRef = useRef()
+
+ const [isLoading, setLoading] = useState(true);
+ const [poolList, setPoolList] = useState([]);
+ const pooInfo = {
+    isLoading :true,
+    poolList :[]
+    
+}
+  const name = "jack";
+  const postion = 0;
   useEffect(() => {
     fetch('https://testnet.viswap.io/data/info.json')
       .then((response) => response.json())
-      .then((json) => setPoolList1(json.poolList))
+      .then((json) => setPoolList(json.poolList))
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
+      .finally(() =>  setLoading(false));
   }, []);
 
-  const pools = useMinePools()
-  const [activeMineItem, setActiveMineItem] = useState()
-
-
-  const elementRef = useRef()
   return (
     <>
       <Mui.Container spacing={0}> 
         <Mui.Grid container spacing={2} sx={{ marginTop: {xs: "20px", sm: "15px" },overflow: "hidden" ,boxShadow: "none" }} >
-          {pools.map((pool) => <MineItem  key =  {pool.index}  {...pool}  {...poolList1} handleDepositClick={() => setActiveMineItem(pool)} /> )}
+          {pooInfo.isLoading = isLoading , pooInfo.poolList = poolList, pools.map((pool) => <MineItem  key = {pool.index}  {...pooInfo}   {...pool}  handleDepositClick={() => setActiveMineItem(pool)} /> )}
         </Mui.Grid>
       </Mui.Container>
       <Mui.Dialog
