@@ -501,9 +501,9 @@ function Swap() {
             <InfoLine/>
             <InfoLine/>
             <InfoLine
-              name={intl.formatMessage({ defaultMessage: 'Minimum received' })}
+              name={intl.formatMessage({ defaultMessage: 'Min received' })}
               tooltip={intl.formatMessage({ defaultMessage: 'Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.' })}
-              value={getMinOutput(trade.amount1).toMaxDecimals(token1.decimals)}
+              value={getMinOutput(trade.amount1).toMaxDecimals(token1.decimals).replace(re,"$1")}}
               unit={token1.displayName}
             />
             <InfoLine
