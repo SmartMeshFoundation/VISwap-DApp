@@ -149,7 +149,7 @@ export default function Home() {
                 <div className="text">
                   Launch the official website.
                 </div>
-                <div className="text">Publish Value Internet Swap Dos.</div>
+                <div className="text">Publish Value Internet Swap Docs.</div>
                 <div className="text">Support ERC-20 and ERC-721 Token Cross-Chain.</div>
                 <div className="text">Launch HECO Swap.</div>
               </div>
