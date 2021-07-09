@@ -51,11 +51,6 @@ export default function Home() {
     id: daoToken.address,
     decimals: daoToken.decimals
   })
-  const totalSupply = useContractChecker({
-    type: 'totalSupply',
-    id: daoToken.address,
-    decimals: daoToken.decimals
-  })
   const pendingAllAmount = useContractChecker({
     type: 'pendingAllAmount',
     id: daoToken.address,
@@ -64,13 +59,14 @@ export default function Home() {
   const re = /([0-9]+\.[0-9]{2})[0-9]*/;
 
   const [isLoading, setLoading] = useState(true);
+  const [totalSupply, setTotalSupply] = useState([0]);
   const [totalLocked, setTotalLocked] = useState([0]);
   const [price, setPrice] = useState([0]);
 
   useEffect(() => {
     fetch('https://testnet.viswap.io/data/info.json')
       .then((response) => response.json())
-      .then((json) => {setPrice(json.VIT_USD);setTotalLocked(json.totalLocked)})
+      .then((json) => {setTotalSupply(json.totalSupply);setPrice(json.VIT_USD);setTotalLocked(json.totalLocked)})
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
@@ -88,7 +84,7 @@ export default function Home() {
             <Mui.Grid item width="50%" md={4}>
               <Item
                 name={intl.formatMessage({ defaultMessage: 'Total Supply' })}
-                value={totalSupply ? totalSupply.toFixed() : "-"}
+                value={isLoading? "-" :totalSupply}
                 unit={daoToken.displayName}
               />
             </Mui.Grid>
