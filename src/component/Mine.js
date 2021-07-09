@@ -391,6 +391,7 @@ function ActiveMineItem(props) {
 }
 
 function MineItem(props) {
+  
   var {isLoading} = props
   const {poolList, depositToken, index, handleDepositClick} = props
   if(!isLoading && index >= poolList.length)
@@ -446,11 +447,12 @@ function MineItem(props) {
         }
         </Mui.Grid>
        </Mui.Grid>
-        <Mui.Typography   textAlign="center" fontWeight = "fontWeightMedium" style={{ fontSize: '20px' }}>
+        
+        <Mui.Typography  sx={{ marginTop: {xs: "10px"}}} textAlign="center" fontWeight = "fontWeightMedium" style={{ fontSize: '20px' }}>
           {displayName}
          </Mui.Typography>
-        <Mui.CardContent sx={{ p: 2, mt: 'auto' }}> 
-        <Mui.Grid m={1} container direction="row" justifyContent="center" alignItems="center" spacing={-2}>
+        
+        <Mui.Grid m={1} container direction="row" justifyContent="center" alignItems="center" spacing={-2} sx={{marginTop: {xs: "20px"}}}>
          <Mui.Chip
               className="cn-custom-chip"
               style={{ fontSize: '16px'}}
@@ -464,17 +466,12 @@ function MineItem(props) {
             />
          </Mui.Grid>
         
-           
-           <InfoLine />
-           <InfoLine />
-           <InfoLine />
-           <InfoLine />
-           <InfoLine 
+        <Mui.CardContent sx={{ p: 2, mt: 'auto',marginTop: {xs: "30px"}}}> 
+           <InfoLine
             name={intl.formatMessage({ defaultMessage: 'TVL' })}
             unit={isLoading?"~":poolList[index].tvl}
             value={'$'}
           />
-          
           <InfoLine 
             name={intl.formatMessage({ defaultMessage: 'Weekly rewards' })}
             value={outputPerBlock ? outputPerBlock.toFixed()*20*60*24*7 : '–'}
@@ -482,9 +479,7 @@ function MineItem(props) {
               token: daoToken.displayName
             })}
           />
-          
           <Mui.Grid container spacing={1}>
-          
             <Mui.Grid item flexGrow={1}>
               <Mui.Button className="custom-btn" style={{textTransform: 'none'}} fullWidth variant="contained" onClick={handleDepositClick}>
                 {intl.formatMessage({ defaultMessage: 'Select' })}
@@ -503,12 +498,12 @@ export default function Mine() {
   const [activeMineItem, setActiveMineItem] = useState()
   const elementRef = useRef()
 
- const [isLoading, setLoading] = useState(true);
- const [poolList, setPoolList] = useState([]);
- const pooInfo = {
+  const [isLoading, setLoading] = useState(true);
+  const [poolList, setPoolList] = useState([]);
+  const pooInfo = {
     isLoading :true,
     poolList :[]
-   
+    
   }
   useEffect(() => {
     fetch('https://testnet.viswap.io/data/info.json')
