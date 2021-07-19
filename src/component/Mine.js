@@ -222,7 +222,7 @@ function ActiveMineItem(props) {
   let withdrawDisplay;
   if (!parseFloat(withdrawAmount)) {
     withdrawDisplay = {
-      buttonText: intl.formatMessage({ defaultMessage: 'Pleace Enter Amount' }),
+      buttonText: intl.formatMessage({ defaultMessage: 'Please Enter Amount' }),
       buttonVariant: "contained",
       buttonDisabled: true
     }
