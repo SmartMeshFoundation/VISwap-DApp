@@ -241,7 +241,7 @@ function Swap() {
       trade.price !== '1' && dispatch({ type: 'price_changed', value: '1' })
     }
   }, [isDeposit, isWithdraw, type, trade.price])
-
+  const daoToken = useMemo(() => chain ? chain.dao : {}, [chain])
   const swap = useCallback((trade, send) => {
     let method;
     let options;
@@ -292,7 +292,35 @@ function Swap() {
       }
       dispatch({ type: 'price_changed', value: price })
     } else {
-      if (token0.address === chain.eth.address) {
+      if (token0.address === daoToken.address && token1.address === chain.eth.address) {
+          method = chain.contracts.router.methods.swapExactTokensForETHSupportingFeeOnTransferTokens(
+            new BigNumber(trade.amount0).shiftedBy(token0.decimals).toFixed(0),
+          getMinOutput(trade.amount1).shiftedBy(token1.decimals).toFixed(0),
+          trade.bestRoute,
+          wallet.account,
+          getDeadline()
+        )
+        options = { from: wallet.account }
+      } else if (token1.address === daoToken.address  && token0.address === chain.eth.address) {
+         method = chain.contracts.router.methods.swapExactETHForTokensSupportingFeeOnTransferTokens(
+          getMinOutput(trade.amount1).shiftedBy(token1.decimals).toFixed(0),
+          trade.bestRoute, wallet.account,
+          getDeadline()
+         )
+         options = {
+          from: wallet.account,
+          value: new BigNumber(trade.amount0).shiftedBy(18).toFixed(0)
+        }
+      } else if (token0.address === daoToken.address || token1.address === daoToken.address) {
+         method = chain.contracts.router.methods.swapExactTokensForTokensSupportingFeeOnTransferTokens(
+           new BigNumber(trade.amount0).shiftedBy(token0.decimals).toFixed(0),
+          getMinOutput(trade.amount1).shiftedBy(token1.decimals).toFixed(0),
+          trade.bestRoute,
+          wallet.account,
+          getDeadline()
+        )
+        options = { from: wallet.account }
+      } else if (token0.address === chain.eth.address) {
         method = chain.contracts.router.methods.swapExactETHForTokens(
           getMinOutput(trade.amount1).shiftedBy(token1.decimals).toFixed(0),
           trade.bestRoute, wallet.account,
