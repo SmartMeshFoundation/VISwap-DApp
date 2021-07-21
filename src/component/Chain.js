@@ -16,9 +16,9 @@ export const chainOptions = {
   256: {
     networkName: defineMessage({ defaultMessage: 'HECO Network' }),
     factory: '0x069a820eca119cceC6a26B1d1ae47aA64b9A1512',
-    router: '0x2b79D74Df6aEF3fE663e96CF16Ff3C1f541d49F4',
+    router: '0xFe9C926E35896B50bD1f202cC3aE129905dDE6a2',
     weth: '0x7af326b6351c8a9b8fb8cd205cbe11d4ac5fa836',
-    mine: '0x7b714304231F1bCbb10986f0d286226e1dBf8191',
+    mine: '0x6A4b52289baf199746a9c9A7343f8babd342682b',
     eth: {
       symbol: 'HT',
       name: 'HECO'
@@ -28,7 +28,7 @@ export const chainOptions = {
       symbol: 'VIT',
       name: 'ViSwap',
       decimals: 18,
-      address: '0x6710C1a79F83e9355CFd0CE1D6C1799388526A20'
+      address: '0xB15BF935207e8857CBa3B7F49baf104D1E2D567f'
     }
   }
 }
